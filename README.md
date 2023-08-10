@@ -48,10 +48,10 @@ Código-Fonte do Projeto desenvolvido durante as aulas de  desenvolvido durante 
 `database/sql/db_aula.sql`
 
 **Criar um arquivo para inserir registros no banco de dados**  
-`php artisan make:seeder CategoriaSeeder`
+`php artisan make:seeder NomeSeeder`
 
 **Inserir registros no banco de dados a partir de um arquivo**  
-`php artisan db::seed CategoriaSeeder`
+`php artisan db::seed NomeSeeder`
 
 ----
 ## Comandos básicos do Laravel  
