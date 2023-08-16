@@ -17,6 +17,7 @@
             <th>Email</th>
             <th>CPF</th>
             <th>Telefone</th>
+            <th>Ações</th>
         </tr>
         @foreach ($alunos as $item)
             <tr>
@@ -26,6 +27,7 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->cpf}}</td>
                 <td>{{$item->telefone}}</td>
+                <td><a href="{{route('aluno.edit', $item->id)}}">Editar</a></td>
             </tr>
         @endforeach
     </table>

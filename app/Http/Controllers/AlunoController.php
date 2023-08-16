@@ -64,9 +64,11 @@ class AlunoController extends Controller
     /**
      * Carrega o formulário para edição
      */
-    public function edit(Aluno $aluno)
+    public function edit($id)
     {
-        //
+        $aluno = Aluno::find($id); //select * from aluno where id = $id
+
+        return view('aluno.form')->with(['aluno'=>$aluno]);
     }
 
     /**
@@ -74,7 +76,29 @@ class AlunoController extends Controller
      */
     public function update(Request $request, Aluno $aluno)
     {
-        //
+        $request->validate([
+            'nome'=>'required|max:100',
+            'cpf'=>'required|max:14'
+        ],[
+            'nome.required'=>"O :attribute é obrigatorio!",
+            'nome.max'=>" Só é permitido 120 caracteres no :attribute !",
+            'cpf.required'=>"O :attribute é obrigatorio!",
+            'cpf.max'=>" Só é permitido 14 caracteres no :attribute !",
+        ]);
+
+        $dados = ['nome'=> $request->nome,
+            'data_nascimento'=> $request->data_nascimento,
+            'cpf'=> $request->cpf,
+            'email'=> $request->email,
+            'telefone'=>$request->telefone
+        ];
+
+        Aluno::updateOrCreate(
+            ['id'=>$request->id],
+            $dados);
+
+        return redirect('aluno')->with('success', "Atualizado com sucesso!");
+
     }
 
     /**
