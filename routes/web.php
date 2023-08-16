@@ -28,6 +28,14 @@ Route::get('/aluno/edit/{id}',
  Route::put('/aluno/update/{id}',
     [AlunoController::class, 'update'])->name('aluno.update');
 
+//chama o método para excluir o registro
+Route::get('/aluno/destroy/{id}',
+    [AlunoController::class, 'destroy'])->name('aluno.destroy');
+
+//chama o método para serch para pesquisar e filtrar o registro da listagem
+Route::post('/aluno/search',
+    [AlunoController::class, 'search'])->name('aluno.search');
+
 //chamar uma página em HTML
 Route::get('/pagina', function () {
     return view('index');

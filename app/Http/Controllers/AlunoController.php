@@ -104,8 +104,29 @@ class AlunoController extends Controller
     /**
      * Remove o registro do banco de dados
      */
-    public function destroy(Aluno $aluno)
+    public function destroy($id)
     {
-        //
+        $aluno = Aluno::findOrFail($id);
+
+        $aluno->delete();
+
+        return redirect('aluno')->with('success', "Removido com sucesso!");
+    }
+    /**
+     * pesquisa e filtra o registro do banco de dados
+     */
+    public function search(Request $request)
+    {
+        if(!empty($request->valor)){
+            $alunos = Aluno::where(
+                $request->tipo,
+                 'like' ,
+                "%". $request->valor."%"
+                )->get();
+        } else {
+            $alunos = Aluno::all();
+        }
+
+        return view('aluno.list')->with(['alunos'=> $alunos]);
     }
 }

@@ -8,7 +8,19 @@
 </head>
 <body>
     <h3>Listagem de Alunos</h3>
-    <a href="{{ route('aluno.create') }}">Cadastrar</a><br>
+    <form action="{{ route('aluno.search') }}" method="post">
+        @csrf <!-- cria um hash de segurança -->
+        <select name="tipo" >
+            <option value="nome">Nome</option>
+            <option value="data_nascimento">Data Nascimento</option>
+            <option value="email">Email</option>
+            <option value="cpf">CPF</option>
+            <option value="telefone">Telefone</option>
+        </select>
+        <input type="text" name="valor">
+        <button type="submit">Buscar</button>
+        <a href="{{ route('aluno.create') }}">Cadastrar</a><br>
+    </form>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -28,6 +40,9 @@
                 <td>{{$item->cpf}}</td>
                 <td>{{$item->telefone}}</td>
                 <td><a href="{{route('aluno.edit', $item->id)}}">Editar</a></td>
+                <td><a href="{{route('aluno.destroy', $item->id)}}"
+                    onclick="return confirm('Deseja Excluir?')">Excluir</a>
+                </td>
             </tr>
         @endforeach
     </table>
