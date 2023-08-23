@@ -23,7 +23,7 @@
           $route = route('aluno.store');
         }
     @endphp
-    <form action="{{ $route }}" method="post">
+    <form action="{{ $route }}" method="post" enctype="multipart/form-data">
         @csrf <!-- cria um hash de segurança -->
 
         @if (!empty($aluno->id))
@@ -47,7 +47,25 @@
         <label for="">Telefone</label><br>
         <input type="text" name="telefone"
             value="@if (!empty(old('telefone'))){{old('telefone')}}@elseif(!empty($aluno->telefone)){{$aluno->telefone}}@else{{''}}@endif"><br><br>
-        <button type="submit">Salvar</button><br>
+
+        {{-- dd($categorias) --}}
+        <label for="">Categoria</label><br>
+        <select name="categoria_aluno_id">
+            @foreach ($categorias as $item )
+                <option value="{{$item->id}}">{{$item->nome}}</option>
+            @endforeach
+        </select><br>
+        @php
+            $nome_imagem = !empty($aluno->imagem) ?
+                $aluno->imagem : 'sem_imagem.jpg';
+        @endphp
+        <div>
+            <img src="/storage/{{$nome_imagem}}" width="300px" alt="imagem">
+            <br>
+            <br>
+            <input type="file" name="imagem"><br>
+        </div>
+            <button type="submit">Salvar</button><br>
         <a href="{{ route('aluno.index') }}">Voltar</a>
     </form>
 </body>

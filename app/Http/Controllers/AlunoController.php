@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\CategoriaAluno;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
@@ -22,7 +23,9 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('aluno.form');
+        $categorias = CategoriaAluno::orderBy('nome')->get();
+
+        return view('aluno.form')->with(['categorias'=> $categorias]);
     }
 
     /**
@@ -42,11 +45,26 @@ class AlunoController extends Controller
         ]);
 
         $dados = ['nome'=> $request->nome,
-            'data_nascimento'=> $request->data_nascimento,
-            'cpf'=> $request->cpf,
-            'email'=> $request->email,
-            'telefone'=>$request->telefone
+        'data_nascimento'=> $request->data_nascimento,
+        'cpf'=> $request->cpf,
+        'email'=> $request->email,
+        'telefone'=>$request->telefone,
+        'categoria_aluno_id'=>$request->categoria_aluno_id,
         ];
+
+        $imagem = $request->file('imagem');
+        //verifica se existe imagem no formulário
+    if($imagem){
+        $nome_arquivo =
+        date('YmdHis').'.'.$imagem->getClientOriginalExtension();
+
+        $diretorio = "imagem/aluno/";
+        //salva imagem em uma pasta do sistema
+        $imagem->storeAs($diretorio,$nome_arquivo,'public');
+
+        $dados['imagem'] = $diretorio.$nome_arquivo;
+    }
+
 
         Aluno::create($dados); //ou  $request->all()
 
@@ -68,7 +86,11 @@ class AlunoController extends Controller
     {
         $aluno = Aluno::find($id); //select * from aluno where id = $id
 
-        return view('aluno.form')->with(['aluno'=>$aluno]);
+        $categorias = CategoriaAluno::orderBy('nome')->get();
+
+        return view('aluno.form')->with([
+            'aluno'=> $aluno,
+            'categorias' => $categorias]);
     }
 
     /**
@@ -90,8 +112,23 @@ class AlunoController extends Controller
             'data_nascimento'=> $request->data_nascimento,
             'cpf'=> $request->cpf,
             'email'=> $request->email,
-            'telefone'=>$request->telefone
+            'telefone'=>$request->telefone,
+            'categoria_aluno_id'=>$request->categoria_aluno_id,
+            'imagem'=>$request->imagem,
         ];
+
+        $imagem = $request->file('imagem');
+        //verifica se existe imagem no formulário
+        if($imagem){
+            $nome_arquivo =
+            date('YmdHis').'.'.$imagem->getClientOriginalExtension();
+
+            $diretorio = "imagem/aluno/";
+            //salva imagem em uma pasta do sistema
+            $imagem->storeAs($diretorio,$nome_arquivo,'public');
+
+            $dados['imagem'] = $diretorio.$nome_arquivo;
+        }
 
         Aluno::updateOrCreate(
             ['id'=>$request->id],

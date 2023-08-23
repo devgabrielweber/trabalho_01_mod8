@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use stdClass;
 
+
 class UsuarioController extends Controller
 {
     function index()

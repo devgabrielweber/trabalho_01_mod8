@@ -24,21 +24,30 @@
     <table border="1">
         <tr>
             <th>ID</th>
+            <th>Imagem</th>
             <th>Nome</th>
             <th>Data Nascimento</th>
             <th>Email</th>
             <th>CPF</th>
             <th>Telefone</th>
+            <th>Categoria</th>
             <th>Ações</th>
         </tr>
         @foreach ($alunos as $item)
+        @php
+            $nome_imagem = !empty($item->imagem) ?
+                $item->imagem : 'sem_imagem.jpg';
+        @endphp
             <tr>
+                <td><img src="/storage/{{$nome_imagem}}"
+                    width="100px" alt="imagem"></td>
                 <td>{{$item->id}}</td>
                 <td>{{$item->nome}}</td>
                 <td>{{$item->data_nascimento}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->cpf}}</td>
                 <td>{{$item->telefone}}</td>
+                <td>{{$item->categoria->nome ?? "" }}</td>
                 <td><a href="{{route('aluno.edit', $item->id)}}">Editar</a></td>
                 <td><a href="{{route('aluno.destroy', $item->id)}}"
                     onclick="return confirm('Deseja Excluir?')">Excluir</a>
