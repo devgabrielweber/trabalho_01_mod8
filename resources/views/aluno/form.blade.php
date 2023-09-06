@@ -3,13 +3,6 @@
 @section('titulo', 'Formulário de Aluno')
 
 @section('content')
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
     @php
         // dd($aluno); // é igual ao var_dump()
         if (!empty($aluno->id)) {

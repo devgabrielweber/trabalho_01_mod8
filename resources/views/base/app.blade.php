@@ -24,6 +24,7 @@
     @include('base.menu')
 
     <div class="md:container md:mx-auto">
+        @include('base.flash-message')
         @yield('content')
     </div>
 </body>
