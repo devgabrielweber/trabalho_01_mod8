@@ -98,4 +98,5 @@ Código-Fonte do Projeto desenvolvido durante as aulas de  desenvolvido durante 
 
 ### Links Úteis
 - [Documentação oficial do Laravel](https://laravel.com/docs).
+- [Correção do Erro de instalação do login Breeze](https://stackoverflow.com/questions/72798465/vite-manifest-not-found-at-c-users-hp-example-app-public-build-manifest-json)
 - [Curso completo Laravel versão 10 em português](https://academy.especializati.com.br/curso/laravel-10-gratuito).
