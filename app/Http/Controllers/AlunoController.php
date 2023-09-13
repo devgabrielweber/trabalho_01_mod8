@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Aluno;
 use App\Models\CategoriaAluno;
 use Illuminate\Http\Request;
+use PDF;
+use App\Charts\GraficoAluno;
 
 class AlunoController extends Controller
 {
@@ -165,5 +167,26 @@ class AlunoController extends Controller
         }
 
         return view('aluno.list')->with(['alunos'=> $alunos]);
+    }
+
+    public function report(){
+            //select * from aluno order by nome
+            $alunos = Aluno::orderBy('nome')->get();
+
+            $data = [
+                'title'=>"Relatorio Listagem de Alunos",
+                'alunos'=> $alunos
+            ];
+
+            $pdf = PDF::loadView('aluno.report',$data);
+            //$pdf->setPaper('a4', 'landscape');
+           // dd($pdf);
+
+            return $pdf->download("listagem_alunos.pdf");
+    }
+
+    public function chart(GraficoAluno $chart){
+
+        return view('aluno.chart')->with(['chart'=> $chart->build()]);
     }
 }

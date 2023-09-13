@@ -56,10 +56,22 @@ Route::get('/aluno/destroy/{id}',
 Route::post('/aluno/search',
     [AlunoController::class, 'search'])->name('aluno.search');
 
+//relatorio
+Route::get('/aluno/report/',
+    [AlunoController::class, 'report'])->name('aluno.report');
+
+//grafico
+Route::get('/aluno/chart/',
+    [AlunoController::class, 'chart'])->name('aluno.chart');
+
+
+
 //chamar uma página em HTML
 Route::get('/pagina', function () {
     return view('index');
 });
+
+
 
 //chama um HTML
 Route::get('/teste', function () {
