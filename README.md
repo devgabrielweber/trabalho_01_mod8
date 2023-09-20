@@ -65,7 +65,7 @@ Código-Fonte do Projeto desenvolvido durante as aulas de  desenvolvido durante 
 `php artisan make:model NomeModel -m`
 
 **Criar um arquivo Controller**  
-`php artisan make:controller NomeModel`
+`php artisan make:controller NomeController`
 
 **Criar um Controller e o --model associa com o Model da tabela**  
 `php artisan make:controller NomeController --resource --model=NomeModel`
