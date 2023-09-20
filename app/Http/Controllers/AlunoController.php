@@ -7,6 +7,7 @@ use App\Models\CategoriaAluno;
 use Illuminate\Http\Request;
 use PDF;
 use App\Charts\GraficoAluno;
+use App\Charts\AlunosNotasChart;
 
 class AlunoController extends Controller
 {
@@ -185,8 +186,10 @@ class AlunoController extends Controller
             return $pdf->download("listagem_alunos.pdf");
     }
 
-    public function chart(GraficoAluno $chart){
+    public function chart(GraficoAluno $aluno, AlunosNotasChart $alunosNotas){
 
-        return view('aluno.chart')->with(['chart'=> $chart->build()]);
+        return view('aluno.chart')->with(['aluno'=>  $aluno->build(),
+                      'alunosNotas'=>  $alunosNotas->build()
+    ]);
     }
 }

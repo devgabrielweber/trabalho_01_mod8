@@ -12,13 +12,21 @@
 <div class="container px-4 mx-auto">
 
     <div class="p-6 m-20 bg-white rounded shadow">
-        {!! $chart->container() !!}
+        <!-- essa parte é o HTML do gráfico -->
+        {!! $aluno->container() !!}
+    </div>
+
+    <div class="p-6 m-20 bg-white rounded shadow">
+         <!-- essa parte é o HTML do gráfico -->
+        {!! $alunosNotas->container() !!}
     </div>
 
 </div>
+<!-- faz o import da biblioteca ApexChart -->
+<script src="{{ $aluno->cdn() }}"></script>
 
-<script src="{{ $chart->cdn() }}"></script>
-
-{{ $chart->script() }}
+ <!-- adiciona os Scripts do JavaScript do ApexChart -->
+{{ $aluno->script() }}
+{{ $alunosNotas->script() }}
 </body>
 </html>

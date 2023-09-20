@@ -25,6 +25,11 @@ class Aluno extends Model
         'categoria_aluno_id'=> "integer"
     ];
 
+    public function matricula(){
+        //relacionamento 1 - 1 (um para um)
+        return $this->hasOne(Matricula::class);
+    }
+
     public function categoria(){
         return $this->belongsTo(CategoriaAluno::class,
             'categoria_aluno_id','id');

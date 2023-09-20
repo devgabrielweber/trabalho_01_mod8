@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 //importar o arquivo do controlador
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\RelacionamentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,10 @@ Route::get('/teste', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/relacionamento',
+  [RelacionamentoController::class, 'index'])
+  ->name('relacionamento');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
