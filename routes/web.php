@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\RelacionamentoController;
+use App\Http\Controllers\MatriculaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,11 +87,16 @@ Route::get('/', function () {
 Route::get('/relacionamento',
   [RelacionamentoController::class, 'index'])
   ->name('relacionamento');
+  Route::post('/matricula/search',
+  [MatriculaController::class, 'search'])->name('matricula.search');
+Route::resource('matricula', MatriculaController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
 });
 
 require __DIR__.'/auth.php';

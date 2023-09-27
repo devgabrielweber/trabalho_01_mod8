@@ -12,14 +12,17 @@ use App\Models\Matricula;
 class RelacionamentoController extends Controller
 {
     public function index(){
+        //$aluno = Aluno::with(['matricula','categoria'])->get();
+        $matricula = Matricula::with(['curso','turma','aluno'])->get();
 
-        $aluno = Aluno::with(['matricula','categoria'])->get();
-
+        dd($matricula[0]->curso->nome. " - ".
+           $matricula[0]->turma->nome. " - ".
+           $matricula[0]->aluno->nome);
         //acesso o indice do vetor zero
         //depois o relacionamento
-        var_dump($aluno[0]->matricula->data_matricula);
-        dd($aluno[2]->categoria->nome);
 
+      //  print_r($aluno[2]);
+       // dd($aluno[2]->categoria->nome);
     }
 
     public function store(){

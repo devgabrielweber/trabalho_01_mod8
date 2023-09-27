@@ -22,12 +22,22 @@ class Matricula extends Model
         'curso_id' =>'integer',
         'turma_id' =>'integer',
         'aluno_id' =>'integer',
-        'data_matricula' =>'date',
+        'data_matricula' =>'datetime:Y-m-d',
     ];
 
     public function aluno(){
 
         return $this->belongsTo(Aluno::class);
+    }
+
+    public function turma(){
+
+        return $this->belongsTo(Turma::class);
+    }
+
+    public function curso(){
+
+        return $this->belongsTo(Curso::class);
     }
 
 
