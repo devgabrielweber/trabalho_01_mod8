@@ -27,7 +27,7 @@ class ReservaController extends Controller{
         $quartos = Quarto::orderBy('id')->get();
 
         return view('reserva.form')->with([
-            'reservas'=> $reservas,
+            'reserva'=> $reservas,
             'hospedes'=> $hospedes,
             'quartos'=> $quartos,
         ]);
