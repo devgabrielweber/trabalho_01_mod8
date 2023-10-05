@@ -18,7 +18,7 @@
             }
         }
     </script>
-    <title>@yield('titulo') - SisACAD</title>
+    <title>@yield('titulo') - WH Hotel</title>
 </head>
 
 <body>
@@ -29,5 +29,14 @@
         @yield('content')
     </div>
 </body>
+
+
+
+<footer class="fixed bottom-0 mr-auto ml-auto w-full p-4 bg-white border-t border-gray-200 shadow flex items-center justify-center md:p-6 dark:border-gray-200">
+    <span class="text-sm sm:text-center">© 2023 WH Hotel. Todos os direitos reservados.
+    </span>
+</footer>
+
+
 
 </html>

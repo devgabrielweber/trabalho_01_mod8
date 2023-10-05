@@ -5,24 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Curso extends Model
+class Quarto extends Model
 {
     use HasFactory;
 
-    protected $table = "curso";
+    protected $table = "quarto";
 
     //protected $guarded =["id"];
 
     protected $fillable = [
-        'nome',
-        'requisito',
-        'carga_horaria',
-        'valor'
+        'numero',
+        'qtd_camas',
+        'descricao',
+        'diaria',
     ];
 
     protected $cast = [
-        'carga_horaria'=>'integer',
-        'valor'=>'float'
+        'numero'=>'integer',
+        'qtd_camas'=>'integer',
+        'diaria'=>'float'
     ];
 
 }
