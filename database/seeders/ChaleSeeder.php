@@ -19,23 +19,28 @@ class ChaleSeeder extends Seeder
                 'pessoas' => 4,
                 'descricao' => "Chalé Bonito",
                 'foto' => "https://distribuidoradnc.com.br/wp-content/uploads/2023/02/IMG_7476.jpg",
+                'diaria' => "449.99",
             ],
             [
                 'numero' => 666,
                 'pessoas' => 6,
                 'descricao' => "Habitado por algum demônio",
-                'foto' => "https://www.creativefabrica.com/wp-content/uploads/2022/11/15/Haunted-Cottage-In-The-Middle-Of-The-Forest-Tim-Allen-46829517-1.png"],
+                'foto' => "https://www.creativefabrica.com/wp-content/uploads/2022/11/15/Haunted-Cottage-In-The-Middle-Of-The-Forest-Tim-Allen-46829517-1.png",
+                'diaria' => "499.99",
+            ],
             [
-                
+
                 'numero' => 875,
                 'pessoas' => 3,
                 'descricao' => "Espaçoso, mal iluminado,confortável",
-                'foto' => "https://media-cdn.tripadvisor.com/media/photo-s/1c/03/ee/fd/chales-encanto-das-pedras.jpg"]
+                'foto' => "https://media-cdn.tripadvisor.com/media/photo-s/1c/03/ee/fd/chales-encanto-das-pedras.jpg",
+                'diaria' => "199.99"
+            ]
         ];
 
         foreach($chales as $chale) {
             Chale::create($chale);
-        }  
+        }
 
     }
 }

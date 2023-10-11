@@ -15,10 +15,12 @@ class Chale extends Model
         'pessoas',
         'descricao',
         'foto',
+        'diaria',
     ];
 
     protected $casts = [
         'numero'=>'integer',
         'pessoas'=>'integer',
-    ];  
+        'diaria'=>'float',
+    ];
 }

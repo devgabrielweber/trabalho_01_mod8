@@ -21,6 +21,8 @@
                         ">
                         <option value="numero">Numero</option>
                         <option value="pessoas">Qtd. Hóspedes</option>
+                        <option value="descricao">Descrição</option>
+                        <option value="diaria">Diária</option>
                     </select>
                 </div>
                 <!--Last name input-->
@@ -64,6 +66,9 @@
                                 <th scope="col" class="px-6 py-4">Qtd. Hóspedes</th>
                                 <th scope="col" class="px-6 py-4">Descrição</th>
                                 <th scope="col" class="px-6 py-4">Foto</th>
+                                <th scope="col" class="px-6 py-4">Diária</th>
+                                <th scope="col" class="px-6 py-4">Ações</th>
+                                <th scope="col" class="px-6 py-4">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,6 +81,13 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->descricao ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4"><img src="{{ $item->foto }}" width="100px"
                                             alt="imagem"></td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->diaria ?? '' }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                        href="{{ route('chale.edit', $item->id) }}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                        href="{{ route('chale.destroy', $item->id) }}"
+                                        onclick="return confirm('Deseja Excluir?')"><i class="fa-solid fa-trash" style="color: grey"></i></a>
+                                </td>
                                 </tr>
                             @endforeach
                         </tbody>

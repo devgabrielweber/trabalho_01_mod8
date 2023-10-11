@@ -13,7 +13,7 @@
     @endphp
     <div class="mx-auto py-12 divide-y md:max-w-4xl">
         <div class="grid grid-cols 2 gap-4">
-            <h3 class="pt-4 text-2xl font-medium">Formulário de Hóspede</h3>
+            <h3 class="pt-4 text-2xl font-medium">Formulário de Chalé</h3>
             <form action="{{ $route }}" method="post" enctype="multipart/form-data"
                 class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4">
                 @csrf
@@ -31,12 +31,11 @@
                     <label
                         class="block text-gray-700
                                 font-bold mb-2
-                    ">Nome
-                        do Hóspede</label>
+                    ">Número do Chalé</label>
                     <input type="text"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full" name="nome"
-                        value="@if (!empty($chale->nome)) {{ $chale->nome }}@elseif (!empty(old('nome'))){{ old('nome') }}@else{{ '' }} @endif">
+                         border border-blue-700 rounded-md w-full" name="numero"
+                        value="@if (!empty($chale->numero)) {{ $chale->numero }}@elseif (!empty(old('numero'))){{ old('numero') }}@else{{ '' }} @endif">
                 </div>
 
 
@@ -44,11 +43,11 @@
                     <label
                         class="block text-gray-700
                                 font-bold mb-2
-                    ">CPF</label>
+                    ">Capacidade de hóspedes</label>
                     <input type="text"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full" name="cpf"
-                        value="@if (!empty($chale->cpf)) {{ $chale->cpf }}@elseif (!empty(old('cpf'))){{ old('cpf') }}@else{{ '' }} @endif">
+                         border border-blue-700 rounded-md w-full" name="pessoas"
+                        value="@if (!empty($chale->pessoas)) {{ $chale->pessoas }}@elseif (!empty(old('pessoas'))){{ old('pessoas') }}@else{{ '' }} @endif">
                 </div>
 
 
@@ -56,22 +55,33 @@
                     <label
                         class="block text-gray-700
                                 font-bold mb-2
-                    ">Telefone</label>
+                    ">Descrição do Chalé</label>
                     <input type="text"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full" name="telefone"
-                        value="@if (!empty($chale->telefone)) {{ $chale->telefone }}@elseif (!empty(old('telefone'))){{ old('telefone') }}@else{{ '' }} @endif">
+                         border border-blue-700 rounded-md w-full" name="descricao"
+                        value="@if (!empty($chale->descricao)) {{ $chale->descricao }}@elseif (!empty(old('descricao'))){{ old('descricao') }}@else{{ '' }} @endif">
                 </div>
 
                 <div class="py-4">
                     <label
                         class="block text-gray-700
                                 font-bold mb-2
-                    ">E-mail</label>
+                    ">Imagem</label>
                     <input type="text"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full" name="email"
-                        value="@if (!empty($chale->email)) {{ $chale->email }}@elseif (!empty(old('email'))){{ old('email') }}@else{{ '' }} @endif">
+                         border border-blue-700 rounded-md w-full" name="foto"
+                        value="@if (!empty($chale->foto)) {{ $chale->foto }}@elseif (!empty(old('foto'))){{ old('foto') }}@else{{ '' }} @endif">
+                </div>
+
+                <div class="py-4">
+                    <label
+                        class="block text-gray-700
+                                font-bold mb-2
+                    ">Diária</label>
+                    <input type="text"
+                        class="px-4 py-2
+                         border border-blue-700 rounded-md w-full" name="diaria"
+                        value="@if (!empty($chale->diaria)) {{ $chale->diaria }}@elseif (!empty(old('diaria'))){{ old('diaria') }}@else{{ '' }} @endif">
                 </div>
 
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('pessoas');
             $table->string('descricao')->nullable();
             $table->string('foto')->nullable();
+            $table->float('diaria');
             $table->timestamps();
         });
     }

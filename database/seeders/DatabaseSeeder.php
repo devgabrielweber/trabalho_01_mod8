@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             HospedesSeeder::class,
             QuartosSeeder::class,
             ReservasSeeder::class,
-            ChaleSeeder::class
+            ChaleSeeder::class,
         ]);
     }
 }
