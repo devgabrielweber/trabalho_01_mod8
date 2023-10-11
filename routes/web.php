@@ -73,6 +73,8 @@ use App\Http\Controllers\LazerController;
 
     Route::put('/reserva/update/{id}',[ReservaController::class, 'update'])->name('reserva.update');
 
+    Route::get('/reserva/adicional}',[AdicionalController::class, 'create'])->name('reserva.adicional');
+
 
   //ROTAS DOS CHALÉS
 

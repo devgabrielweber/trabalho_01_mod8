@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('qtd_camas');
             $table->string('descricao',400);
             $table->float('diaria');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

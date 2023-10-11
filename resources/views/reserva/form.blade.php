@@ -7,20 +7,19 @@
         // dd($reserva); // é igual ao var_dump()
         if (!empty($reserva->id)) {
             $route = route('reserva.update', $reserva->id);
-
+        
             $data_inicio = $reserva->data_inicio;
             $data_inicio = date('Y-m-d', strtotime($data_inicio));
-
+        
             $data_fim = $reserva->data_fim;
             $data_fim = date('Y-m-d', strtotime($data_fim));
         } else {
             $route = route('reserva.store');
-
-            $data_inicio = date("Y-m-d");
-
-            $data_fim = date("Y-m-d");
+        
+            $data_inicio = date('Y-m-d');
+        
+            $data_fim = date('Y-m-d');
         }
-
         
     @endphp
     <div class="mx-auto py-12 divide-y md:max-w-4xl">
@@ -49,8 +48,8 @@
                         ">
                         @foreach ($hospedes as $item)
                             <option value="{{ $item->id }}"
-                            @if( (!empty($reserva->id)) && $reserva->hospede_id == $item->id) {{ 'selected' }}@endif>
-                            {{ $item->nome }}</option>
+                                @if (!empty($reserva->id) && $reserva->hospede_id == $item->id) {{ 'selected' }} @endif>
+                                {{ $item->nome }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -65,7 +64,8 @@
                                 focus:ring-0 focus:border-blue-700
                         ">
                         @foreach ($quartos as $item)
-                            <option value="{{ $item->id }}" @if( (!empty($reserva->id)) && $reserva->quarto_id == $item->id) {{ 'selected' }}@endif>{{ $item->numero }}</option>
+                            <option value="{{ $item->id }}"
+                                @if (!empty($reserva->id) && $reserva->quarto_id == $item->id) {{ 'selected' }} @endif>{{ $item->numero }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -80,8 +80,7 @@
                     <input type="date"
                         class="px-4 py-2
                          border border-blue-700 rounded-md w-full"
-                        name="data_inicio"
-                        value="{{$data_inicio}}">
+                        name="data_inicio" value="{{ $data_inicio }}">
                 </div>
 
 
@@ -93,14 +92,13 @@
                         Fim</label>
                     <input type="date"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full"
-                        name="data_fim",
-                        value="{{$data_fim}}">
+                         border border-blue-700 rounded-md w-full" name="data_fim",
+                        value="{{ $data_fim }}">
                 </div>
-            
 
 
-                
+
+
                 <div class="py-4 px-2 flex center">
                     <button
                         class="

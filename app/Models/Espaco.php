@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lazer extends Model
+class Espaco extends Model
 {
     use HasFactory;
 
-    protected $table = 'lazer';
+    protected $table = 'espaco';
     protected $fillable = [
         'nome',
         'descricao',

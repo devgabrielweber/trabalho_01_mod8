@@ -1,20 +1,20 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Lazer;
+use App\Models\Espaco;
 use App\Models\Turma;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
 use PDF;
 
 
-class LazerController extends Controller{
+class EscpacoController extends Controller{
 
     public function index()
     {
-        $lazer = Lazer::all();
+        $espaco = Espaco::all();
 
-        return view('lazer.list')->with(['lazer'=> $lazer]);
+        return view('espaco.list')->with(['espaco'=> $espaco]);
     }
 
     /**
@@ -22,9 +22,9 @@ class LazerController extends Controller{
      */
     public function create()
     {
-        $lazer = Lazer::orderBy('nome')->get();
+        $espaco = Espaco::orderBy('nome')->get();
 
-        return view('lazer.form')->with(['lazer'=> $lazer]);
+        return view('espaco.form')->with(['espaco'=> $espaco]);
     }
 
     /**
@@ -54,15 +54,15 @@ class LazerController extends Controller{
         'foto'=>$request->foto,
         ];
 
-        Lazer::create($dados); //ou  $request->all()
+        Espaco::create($dados); //ou  $request->all()
 
-        return redirect('lazer')->with('success', "Cadastrado com sucesso!");
+        return redirect('espaco')->with('success', "Cadastrado com sucesso!");
     }
 
     /**
      * Carrega apenas 1 registro da tabela
      */
-    public function show(Lazer $lazer)
+    public function show(Espaco $espaco)
     {
         //
     }
@@ -72,17 +72,17 @@ class LazerController extends Controller{
      */
     public function edit($id)
     {
-        $lazer = Lazer::find($id); //select * from lazer where id = $id
+        $espaco = Espaco::find($id); //select * from espaco where id = $id
 
-        return view('lazer.form')->with([
-            'lazer'=> $lazer,
+        return view('espaco.form')->with([
+            'espaco'=> $espaco,
         ]);
     }
 
     /**
      * Atualiza os dados do formulário
      */
-    public function update(Request $request, Lazer $lazer)
+    public function update(Request $request, Espaco $espaco)
     {
         $request->validate([
             'nome'=>'required|alpha',
@@ -106,12 +106,12 @@ class LazerController extends Controller{
         'foto'=>$request->foto,
         ];
 
-        Lazer::updateOrCreate(
+        Espaco::updateOrCreate(
             ['id' => $request->id],
             $dados
         );
 
-        return redirect('lazer')->with('success', "Atualizado com sucesso!");
+        return redirect('espaco')->with('success', "Atualizado com sucesso!");
 
     }
 
@@ -120,11 +120,11 @@ class LazerController extends Controller{
      */
     public function destroy($id)
     {
-        $lazer = Lazer::findOrFail($id);
+        $espaco = Espaco::findOrFail($id);
 
-        $lazer->delete();
+        $espaco->delete();
 
-        return redirect('lazer')->with('success', "Removido com sucesso!");
+        return redirect('espaco')->with('success', "Removido com sucesso!");
     }
     /** 
      * pesquisa e filtra o registro do banco de dados
@@ -133,16 +133,16 @@ class LazerController extends Controller{
     {
 
         if(!empty($request->valor)){
-            $lazer = Lazer::where(
+            $espaco = Espaco::where(
                 $request->tipo,
                  'like' ,
                 "%".$request->valor."%"
                 )->get();
         } else {
-            $lazer = Lazer::all();
+            $espaco = Espaco::all();
         }
 
-        return view('lazer.list')->with(['lazer'=> $lazer]);
+        return view('espaco.list')->with(['espaco'=> $espaco]);
     }
 
 }

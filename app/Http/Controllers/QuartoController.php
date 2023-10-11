@@ -52,6 +52,7 @@ class QuartoController extends Controller{
         'qtd_camas'=> $request->qtd_camas,
         'descricao'=> $request->descricao,
         'diaria'=>$request->diaria,
+        'foto'=>$request->foto,
         ];
 
         Quarto::create($dados); //ou  $request->all()
@@ -91,17 +92,21 @@ class QuartoController extends Controller{
             'diaria'=>'required',
         ],[
             'numero.required'=>"O :attribute é obrigatorio!",
+            'numero.numeric'=>"O :attribute deve ser numerico!",
             'qtd_camas.required'=>"O :attribute é obrigatorio!",
+            'qtd_camas.numeric'=>"O :attribute deve ser numerico!",
             'descricao.required'=>"O :attribute é obrigatorio!",
             'diaria.required'=>"O :attribute é obrigatorio!",
+            'diaria.numeric'=>"O :attribute deve ser numerico!",
         ]);
 
+        
         $dados = ['numero'=> $request->numero,
         'qtd_camas'=> $request->qtd_camas,
         'descricao'=> $request->descricao,
         'diaria'=>$request->diaria,
-        ];
-
+        'foto'=>$request->foto,
+    ];
         Quarto::updateOrCreate(
             ['id' => $request->id],
             $dados

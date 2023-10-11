@@ -18,6 +18,7 @@ class Quarto extends Model
         'qtd_camas',
         'descricao',
         'diaria',
+        'foto',
     ];
 
     protected $cast = [

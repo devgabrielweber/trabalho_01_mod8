@@ -4,11 +4,11 @@
 
 @section('content')
 
-    <h3 class="pt-4 text-4xl font-medium text-center mb-4">Listagem de Lazer</h3>
+    <h3 class="pt-4 text-4xl font-medium text-center mb-4">Listagem de Espaco</h3>
     <div
         class="block w-3/4 flex mr-auto ml-auto space-x-3 rounded-lg bg-white p-6 dark:bg-neutral-200 lg:px-8 justify-center align-center">
 
-        <form action="{{ route('lazer.search') }}" method="post">
+        <form action="{{ route('espaco.search') }}" method="post">
             @csrf
             <!-- cria um hash de segurança -->
             <div class="grid grid-cols-3 gap-6 flex space-x-4">
@@ -43,7 +43,7 @@
                     <a class="bg-green-500 hover:bg-green-600 text-white
                                 font-semibold py-2 px-4 rounded focus:outline
                                 focus:ring focus:border-green-300"
-                        href="{{ route('lazer.create') }}">
+                        href="{{ route('espaco.create') }}">
                         <i class="fa-solid fa-plus"></i>
                         Cadastrar</a><br>
                 </div>
@@ -67,7 +67,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($lazer as $item)
+                            @foreach ($espaco as $item)
                                 <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-200">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>

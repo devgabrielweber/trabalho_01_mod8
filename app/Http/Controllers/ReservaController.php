@@ -57,9 +57,8 @@ class ReservaController extends Controller{
             'data_fim'=>$request->data_fim,
         ];
 
-        Reserva::create($dados); //ou  $request->all()
-
-        return redirect('reserva')->with('success', "Cadastrado com sucesso!");
+       $reserva = Reserva::create($dados); //ou  $request->all()
+        return view('reserva.adicional')->with(['reserva'=>$reserva]);
     }
 
     /**

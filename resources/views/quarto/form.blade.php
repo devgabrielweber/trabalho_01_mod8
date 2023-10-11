@@ -31,11 +31,11 @@
                     <label
                         class="block text-gray-700
                                 font-bold mb-2
-                    ">Número do Quarto</label>
+                    ">Número
+                        do Quarto</label>
                     <input type="text"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full"
-                        name="numero"
+                         border border-blue-700 rounded-md w-full" name="numero"
                         value="@if (!empty($quarto->numero)) {{ $quarto->numero }}@elseif (!empty(old('numero'))){{ old('numero') }}@else{{ '' }} @endif">
                 </div>
 
@@ -44,11 +44,11 @@
                     <label
                         class="block text-gray-700
                                 font-bold mb-2
-                    ">Quantidade de Camas</label>
+                    ">Quantidade
+                        de Camas</label>
                     <input type="text"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full"
-                        name="qtd_camas"
+                         border border-blue-700 rounded-md w-full" name="qtd_camas"
                         value="@if (!empty($quarto->qtd_camas)) {{ $quarto->qtd_camas }}@elseif (!empty(old('qtd_camas'))){{ old('qtd_camas') }}@else{{ '' }} @endif">
                 </div>
 
@@ -60,8 +60,7 @@
                     ">Descrição</label>
                     <input type="text"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full"
-                        name="descricao"
+                         border border-blue-700 rounded-md w-full" name="descricao"
                         value="@if (!empty($quarto->descricao)) {{ $quarto->descricao }}@elseif (!empty(old('descricao'))){{ old('descricao') }}@else{{ '' }} @endif">
                 </div>
 
@@ -72,12 +71,21 @@
                     ">Diária</label>
                     <input type="text"
                         class="px-4 py-2
-                         border border-blue-700 rounded-md w-full"
-                        name="diaria"
+                         border border-blue-700 rounded-md w-full" name="diaria"
                         value="@if (!empty($quarto->diaria)) {{ $quarto->diaria }}@elseif (!empty(old('diaria'))){{ old('diaria') }}@else{{ '' }} @endif">
                 </div>
 
-                
+                <div class="py-4">
+                    <label
+                        class="block text-gray-700
+                                font-bold mb-2
+                    ">Foto</label>
+                    <input type="text"
+                        class="px-4 py-2
+                         border border-blue-700 rounded-md w-full" name="foto"
+                        value="@if (!empty($quarto->foto)) {{ $quarto->foto }}@elseif (!empty(old('foto'))){{ old('foto') }}@else{{ '' }} @endif">
+                </div>
+
 
 
                 <div class="py-4 px-2 flex center">

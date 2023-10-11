@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lazer', function (Blueprint $table) {
+        Schema::create('espaco', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->string('descricao');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lazer');
+        Schema::dropIfExists('espaco');
     }
 };
