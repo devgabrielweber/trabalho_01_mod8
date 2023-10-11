@@ -22,7 +22,7 @@ class ChaleController extends Controller{
      */
     public function create()
     {
-        $chales = Chale::orderBy('nome')->get();
+        $chales = Chale::orderBy('numero')->get();
 
         return view('chale.form')->with(['chales'=> $chales]);
     }
@@ -32,10 +32,25 @@ class ChaleController extends Controller{
      */
     public function store(Request $request)
     {
-        $dados = ['nome'=> $request->nome,
-        'cpf'=> $request->cpf,
-        'email'=> $request->email,
-        'telefone'=>$request->telefone,
+        $request->validate([
+            'numero'=>'required|numeric',
+            'pessoas'=>'required|numeric',
+            'diaria'=>'required|numeric',
+        ],[
+            'numero.required'=>"O atributo :attribute é obrigatório!",
+            'pessoas.required'=>"O atributo :attribute é obrigatório!",
+            'diaria.required'=>"O atributo :attribute é obrigatório!",
+
+            'numero.numeric'=>"O :attribute deve ser do tipo numérico!",
+            'pessoas.numeric'=>"O :attribute deve ser do tipo numérico!",
+            'diaria.numeric'=>"O :attribute deve ser do tipo numérico!",
+        ]);
+
+        $dados = ['numero'=> $request->numero,
+        'pessoas'=> $request->pessoas,
+        'descricao'=> $request->descricao,
+        'foto'=>$request->foto,
+        'diaria'=>$request->diaria,
         ];
 
         Chale::create($dados); //ou  $request->all()
@@ -69,25 +84,24 @@ class ChaleController extends Controller{
     public function update(Request $request, Chale $chale)
     {
         $request->validate([
-            'nome'=>'required|max:100',
-            'cpf'=>'required|max:14',
-            'telefone'=>'required|max:25',
-            'email'=>'required|max:80',
+            'numero'=>'required|numeric',
+            'pessoas'=>'required|numeric',
+            'diaria'=>'required|numeric',
         ],[
-            'nome.required'=>"O :attribute é obrigatorio!",
-            'nome.max'=>" Só é permitido 120 caracteres no :attribute !",
-            'cpf.required'=>"O :attribute é obrigatorio!",
-            'cpf.max'=>" Só é permitido 14 caracteres no :attribute !",
-            'telefone.required'=>"O :attribute é obrigatorio!",
-            'telefone.max'=>" Só é permitido 25 caracteres no :attribute !",
-            'email.required'=>"O :attribute é obrigatorio!",
-            'email.max'=>" Só é permitido 80 caracteres no :attribute !",
+            'numero.required'=>"O atributo :attribute é obrigatório!",
+            'pessoas.required'=>"O atributo :attribute é obrigatório!",
+            'diaria.required'=>"O atributo :attribute é obrigatório!",
+
+            'numero.numeric'=>"O :attribute deve ser do tipo numérico!",
+            'pessoas.numeric'=>"O :attribute deve ser do tipo numérico!",
+            'diaria.numeric'=>"O :attribute deve ser do tipo numérico!",
         ]);
 
-        $dados = ['nome'=> $request->nome,
-        'cpf'=> $request->cpf,
-        'email'=> $request->email,
-        'telefone'=>$request->telefone,
+        $dados = ['numero'=> $request->numero,
+        'pessoas'=> $request->pessoas,
+        'descricao'=> $request->descricao,
+        'foto'=>$request->foto,
+        'diaria'=>$request->diaria,
         ];
 
         Chale::updateOrCreate(

@@ -19,6 +19,7 @@
         <a href="{{ route('hospede.index') }}" class="text-xl font-semibold leading-6 text-gray-900">Hóspedes</a>
         <a href="{{ route('quarto.index') }}" class="text-xl font-semibold leading-6 text-gray-900">Quartos</a>
         <a href="{{ route('reserva.index') }}" class="text-xl font-semibold leading-6 text-gray-900">Reservas</a>
+        <a href="{{ route('chale.index') }}" class="text-xl font-semibold leading-6 text-gray-900">Chalés</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
       </div>
