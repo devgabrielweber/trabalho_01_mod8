@@ -7,6 +7,8 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\HospedeController;
 use App\Http\Controllers\QuartoController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\ChaleController;
+use App\Http\Controllers\LazerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +72,40 @@ use App\Http\Controllers\ReservaController;
 
     Route::put('/reserva/update/{id}',[ReservaController::class, 'update'])->name('reserva.update');
 
+    
 
+  //ROTAS DOS CHALÉS
+
+  Route::resource('chale', ChaleController::class);
+    
+  Route::post('/chale',[ChaleController::class, 'index'])->name('chale.list');
+
+  Route::post('/chale/search',[ChaleController::class, 'search'])->name('chale.search');
+
+  Route::post('/chale',[ChaleController::class, 'store'])->name('chale.store');
+
+  Route::get('/chale/destroy/{id}',[ChaleController::class, 'destroy'])->name('chale.destroy');
+
+  Route::get('/chale/edit/{id}',[ChaleController::class, 'edit'])->name('chale.edit');
+
+  Route::put('/reserva/update/{id}',[ReservaController::class, 'update'])->name('reserva.update');
+
+  
+  //ROTAS DOS LAZER
+
+  Route::resource('lazer', LazerController::class);
+    
+  Route::post('/lazer',[LazerController::class, 'index'])->name('lazer.list');
+
+  Route::post('/lazer/search',[LazerController::class, 'search'])->name('lazer.search');
+
+  Route::post('/lazer',[LazerController::class, 'store'])->name('lazer.store');
+
+  Route::get('/lazer/destroy/{id}',[LazerController::class, 'destroy'])->name('lazer.destroy');
+
+  Route::get('/lazer/edit/{id}',[LazerController::class, 'edit'])->name('lazer.edit');
+
+  Route::put('/reserva/update/{id}',[ReservaController::class, 'update'])->name('reserva.update');
 
 
 
