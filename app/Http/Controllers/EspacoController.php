@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use PDF;
 
 
-class EscpacoController extends Controller{
+class EspacoController extends Controller{
 
     public function index()
     {
@@ -34,14 +34,12 @@ class EscpacoController extends Controller{
     {
 
         $request->validate([
-            'nome'=>'required|alpha',
-            'descricao'=>'required|alpha',
+            'nome'=>'required',
+            'descricao'=>'required',
             'valor'=>'required|numeric',
             'foto'=>'required',
         ],[
             'nome.required'=>"O :attribute é obrigatorio!",
-            'nome.alpha'=>"O :attribute não deve conter números!",
-            'descricao.alpha'=>"O :attribute não deve conter números!",
             'descricao.required'=>"O :attribute é obrigatorio!",
             'valor.required'=>"O :attribute é obrigatorio!",
             'valor.numeric'=>"O :attribute deve ser numerico!",
@@ -86,13 +84,10 @@ class EscpacoController extends Controller{
     {
         $request->validate([
             'nome'=>'required|alpha',
-            'descricao'=>'required|alpha',
             'valor'=>'required|numeric',
             'foto'=>'required',
         ],[
             'nome.required'=>"O :attribute é obrigatorio!",
-            'nome.alpha'=>"O :attribute não deve conter números!",
-            'descricao.alpha'=>"O :attribute não deve conter números!",
             'descricao.required'=>"O :attribute é obrigatorio!",
             'valor.required'=>"O :attribute é obrigatorio!",
             'valor.numeric'=>"O :attribute deve ser numerico!",

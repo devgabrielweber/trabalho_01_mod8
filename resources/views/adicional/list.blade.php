@@ -70,12 +70,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($adicionals as $item)
+                            @foreach ($adicionais as $item)
                                 <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-200">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->hospede->nome ?? '' }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->quarto->numero ?? '' }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->reserva->id ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         @if ($item->data_inicio)
                                             {{ date('d-m-Y', strtotime($item->data_inicio)) }}

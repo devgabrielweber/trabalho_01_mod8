@@ -1,5 +1,7 @@
 <?php
+use App\Http\Controllers\AdicionalController;
 
+use App\Http\Controllers\EspacoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
@@ -8,7 +10,6 @@ use App\Http\Controllers\HospedeController;
 use App\Http\Controllers\QuartoController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ChaleController;
-use App\Http\Controllers\LazerController;
 
 
 /*
@@ -93,22 +94,38 @@ use App\Http\Controllers\LazerController;
   Route::put('/reserva/update/{id}',[ReservaController::class, 'update'])->name('reserva.update');
 
   
-  //ROTAS DOS LAZER
+  //ROTAS DOS ESPAÇOS
 
-  Route::resource('lazer', LazerController::class);
+  Route::resource('espaco', EspacoController::class);
     
-  Route::post('/lazer',[LazerController::class, 'index'])->name('lazer.list');
+  Route::post('/espaco',[EspacoController::class, 'index'])->name('espaco.list');
 
-  Route::post('/lazer/search',[LazerController::class, 'search'])->name('lazer.search');
+  Route::post('/espaco/search',[EspacoController::class, 'search'])->name('espaco.search');
 
-  Route::post('/lazer',[LazerController::class, 'store'])->name('lazer.store');
+  Route::post('/espaco',[EspacoController::class, 'store'])->name('espaco.store');
 
-  Route::get('/lazer/destroy/{id}',[LazerController::class, 'destroy'])->name('lazer.destroy');
+  Route::get('/espaco/destroy/{id}',[EspacoController::class, 'destroy'])->name('espaco.destroy');
 
-  Route::get('/lazer/edit/{id}',[LazerController::class, 'edit'])->name('lazer.edit');
+  Route::get('/espaco/edit/{id}',[EspacoController::class, 'edit'])->name('espaco.edit');
 
   Route::put('/reserva/update/{id}',[ReservaController::class, 'update'])->name('reserva.update');
 
+
+  //ROTAS DOS adicionais
+
+  Route::resource('adicional', AdicionalController::class);
+    
+  Route::post('/adicional',[AdicionalController::class, 'index'])->name('adicional.list');
+
+  Route::post('/adicional/search',[AdicionalController::class, 'search'])->name('adicional.search');
+
+  Route::post('/adicional',[AdicionalController::class, 'store'])->name('adicional.store');
+
+  Route::get('/adicional/destroy/{id}',[AdicionalController::class, 'destroy'])->name('adicional.destroy');
+
+  Route::get('/adicional/edit/{id}',[AdicionalController::class, 'edit'])->name('adicional.edit');
+
+  Route::put('/reserva/update/{id}',[ReservaController::class, 'update'])->name('reserva.update');
 
 
 
