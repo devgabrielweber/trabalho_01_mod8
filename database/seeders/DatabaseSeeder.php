@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\HospedesSeeder;
 use Database\Seeders\QuartosSeeder;
 use Database\Seeders\ReservasSeeder;
+use Database\Seeders\EspacoSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ReservasSeeder::class,
             ChaleSeeder::class,
             UserSeeder::class,
+            EspacoSeeder::class,
         ]);
     }
 }

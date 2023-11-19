@@ -75,19 +75,21 @@
                         value="@if (!empty($quarto->diaria)) {{ $quarto->diaria }}@elseif (!empty(old('diaria'))){{ old('diaria') }}@else{{ '' }} @endif">
                 </div>
 
-                <div class="py-4">
-                    <div class="mb-4 d-flex justify-content-center">
-                        <img id="selectedImage"
-                            src="@if (!empty($quarto->diaria)) {{ asset('/public/images/' . $quarto->foto) }} @endif"
-                            style="width: 300px;" />
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="btn btn-primary btn-rounded">
-                            <label class="form-label text-white m-1" for="customFile1">Choose file</label>
-                            <input type="file" class="form-control d-none" name='foto' id="customFile1"
-                                onchange="displaySelectedImage(event, 'selectedImage')" />
-                        </div>
-                    </div>
+                @php
+                    $nome_foto = !empty($quarto->foto) ? $quarto->foto : 'sem_foto.jpg';
+                @endphp
+                <div>
+                    <img class="h-40 w-40 object-cover" src="/storage/{{ $nome_foto }}" width="300px"
+                        alt="foto">
+                    <br>
+                    <input
+                        class="block w-full text-sm text-slate-500
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-green-50 file:text-green-700
+                                hover:file:bg-green-100"
+                        type="file" name="foto"><br>
                 </div>
 
 

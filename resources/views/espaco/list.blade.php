@@ -74,7 +74,7 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->nome ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->descricao ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->valor ?? '' }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4"><img src="{{ $item->foto }}" width="100px"
+                                    <td class="whitespace-nowrap px-6 py-4"><img src="storage/{{ $item->foto }}" width="100px"
                                             alt="imagem"></td>
                                 </tr>
                             @endforeach

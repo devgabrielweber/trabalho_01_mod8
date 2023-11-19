@@ -57,18 +57,25 @@ class QuartoController extends Controller{
             'diaria.numeric'=>"O :attribute deve ser numerico!",
         ]);
 
-        if($request->hasFile('image')){
-            $path = 'storage/images/';
-            $imagemNome = 'quarto'.$request->numero.'Foto';
-            
-            $caminho = $request->file('image')->storeAs($path, $imagemNome);
+        $foto = $request->file('foto');
+        //verifica se existe foto no formulário
+        if($foto){
+            $nome_arquivo =
+            date('YmdHis').'.'.$foto->getClientOriginalExtension();
+
+            $diretorio = "images/quarto/";
+            //salva foto em uma pasta do sistema
+
+
+            $foto->storeAs($diretorio,$nome_arquivo,'public');
+
         }
 
         $dados = ['numero'=> $request->numero,
         'qtd_camas'=> $request->qtd_camas,
         'descricao'=> $request->descricao,
         'diaria'=>$request->diaria,
-        'foto'=>$request->foto
+        'foto'=>$nome_arquivo
         ];
 
         Quarto::create($dados); //ou  $request->all()

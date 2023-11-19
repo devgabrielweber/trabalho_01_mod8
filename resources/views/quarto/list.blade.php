@@ -88,8 +88,7 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->qtd_camas ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->descricao ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->diaria }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4"><img
-                                            src="{{ asset('/public/storage/images/' . $item->foto) }}" /></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><img width="64px" src="/storage/{{ $item->foto }}"/></td>
                                     <td class="whitespace-nowrap px-6 py-4"><a
                                             href="{{ route('quarto.edit', $item->id) }}"><i
                                                 class="fa-solid fa-pen-to-square" style="color: blue;"></i></a></td>
@@ -102,6 +101,7 @@
                             @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
