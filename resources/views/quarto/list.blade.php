@@ -34,7 +34,7 @@
                         type="text" name="valor" placeholder="Pesquisar">
                 </div>
                 <!--Submit button-->
-                <div class="relative mb-6">
+                <div class="relative mb-6 d-flex">
                     <button type="submit"
                         class="bg-blue-500 hover:bg-blue-600 text-white
                             font-semibold py-2 px-4 rounded focus:outline
@@ -48,6 +48,14 @@
                         href="{{ route('quarto.create') }}">
                         <i class="fa-solid fa-plus"></i>
                         Cadastrar</a><br>
+                    <div class="row p-2 d-flex pl-10">
+                        <a class="bg-blue-500 hover:bg-blue-600 text-white
+                                    font-semibold py-2 px-4 rounded focus:outline
+                                    focus:ring focus:border-green-300"
+                            href="{{ route('quarto.chart') }}">
+                            <i class="fa-solid fa-plus"></i>
+                            Gerar gráfico</a><br>
+                    </div>
                 </div>
             </div>
 
@@ -80,7 +88,8 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->qtd_camas ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->descricao ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->diaria }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4"><img src="{{ $item->foto }}" /></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><img
+                                            src="{{ asset('/public/storage/images/' . $item->foto) }}" /></td>
                                     <td class="whitespace-nowrap px-6 py-4"><a
                                             href="{{ route('quarto.edit', $item->id) }}"><i
                                                 class="fa-solid fa-pen-to-square" style="color: blue;"></i></a></td>

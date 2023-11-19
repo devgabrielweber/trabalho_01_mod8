@@ -1,14 +1,23 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Charts\qtdCamas;
 use App\Models\Quarto;
 use App\Models\Turma;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
 use PDF;
 
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+
 
 class QuartoController extends Controller{
+
+    public function geraGrafico(qtdCamas $qtdCamas)
+    {
+        return view('quarto.chart', ['chart' => $qtdCamas->build()]);
+    }
+
 
     public function index()
     {
@@ -48,11 +57,18 @@ class QuartoController extends Controller{
             'diaria.numeric'=>"O :attribute deve ser numerico!",
         ]);
 
+        if($request->hasFile('image')){
+            $path = 'storage/images/';
+            $imagemNome = 'quarto'.$request->numero.'Foto';
+            
+            $caminho = $request->file('image')->storeAs($path, $imagemNome);
+        }
+
         $dados = ['numero'=> $request->numero,
         'qtd_camas'=> $request->qtd_camas,
         'descricao'=> $request->descricao,
         'diaria'=>$request->diaria,
-        'foto'=>$request->foto,
+        'foto'=>$request->foto
         ];
 
         Quarto::create($dados); //ou  $request->all()

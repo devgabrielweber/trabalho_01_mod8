@@ -5,7 +5,8 @@
 @section('content')
 
     <h3 class="pt-4 text-4xl font-medium text-center mb-4">Listagem de Hóspedes</h3>
-    <div class="block w-3/4 flex mr-auto ml-auto space-x-3 rounded-lg bg-white p-6 dark:bg-neutral-200 lg:px-8 justify-center align-center">
+    <div
+        class="block w-3/4 flex mr-auto ml-auto space-x-3 rounded-lg bg-white p-6 dark:bg-neutral-200 lg:px-8 justify-center align-center">
 
         <form action="{{ route('hospede.search') }}" method="post">
             @csrf
@@ -47,6 +48,15 @@
                         href="{{ route('hospede.create') }}">
                         <i class="fa-solid fa-plus"></i>
                         Cadastrar</a><br>
+
+                    <div class="row p-2 d-flex pl-10">
+                        <a class="bg-blue-500 hover:bg-blue-600 text-white
+                    font-semibold py-2 px-4 rounded focus:outline
+                    focus:ring focus:border-green-300"
+                            href="{{ route('relatorio-hospedes-gerar') }}">
+                            <i class="fa-solid fa-plus"></i>
+                            Gerar Relatório</a><br>
+                    </div>
                 </div>
             </div>
 
@@ -79,10 +89,12 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->telefone ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->email }}</td>
                                     <td class="whitespace-nowrap px-6 py-4"><a
-                                            href="{{ route('hospede.edit', $item->id) }}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a></td>
+                                            href="{{ route('hospede.edit', $item->id) }}"><i
+                                                class="fa-solid fa-pen-to-square" style="color: blue;"></i></a></td>
                                     <td class="whitespace-nowrap px-6 py-4"><a
                                             href="{{ route('hospede.destroy', $item->id) }}"
-                                            onclick="return confirm('Deseja Excluir?')"><i class="fa-solid fa-trash" style="color: grey"></i></a>
+                                            onclick="return confirm('Deseja Excluir?')"><i class="fa-solid fa-trash"
+                                                style="color: grey"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

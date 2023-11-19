@@ -76,14 +76,18 @@
                 </div>
 
                 <div class="py-4">
-                    <label
-                        class="block text-gray-700
-                                font-bold mb-2
-                    ">Foto</label>
-                    <input type="text"
-                        class="px-4 py-2
-                         border border-blue-700 rounded-md w-full" name="foto"
-                        value="@if (!empty($quarto->foto)) {{ $quarto->foto }}@elseif (!empty(old('foto'))){{ old('foto') }}@else{{ '' }} @endif">
+                    <div class="mb-4 d-flex justify-content-center">
+                        <img id="selectedImage"
+                            src="@if (!empty($quarto->diaria)) {{ asset('/public/images/' . $quarto->foto) }} @endif"
+                            style="width: 300px;" />
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="btn btn-primary btn-rounded">
+                            <label class="form-label text-white m-1" for="customFile1">Choose file</label>
+                            <input type="file" class="form-control d-none" name='foto' id="customFile1"
+                                onchange="displaySelectedImage(event, 'selectedImage')" />
+                        </div>
+                    </div>
                 </div>
 
 

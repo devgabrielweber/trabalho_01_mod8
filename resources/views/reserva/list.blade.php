@@ -4,8 +4,10 @@
 
 @section('content')
 
-    <h3 class="pt-4 text-4xl font-medium text-center mb-4">Listagem de Reservas</h3>
-    <div class="block w-3/4 flex mr-auto ml-auto space-x-3 rounded-lg bg-white p-6 dark:bg-neutral-200 lg:px-8 justify-center align-center">
+    <h3 class="pt-4 text-4xl font-medium text-center mb-4">
+        Listagem de Reservas</h3>
+    <div
+        class="block w-3/4 flex mr-auto ml-auto space-x-3 rounded-lg bg-white p-6 dark:bg-neutral-200 lg:px-8 justify-center align-center">
 
         <form action="{{ route('reserva.search') }}" method="post">
             @csrf
@@ -45,6 +47,16 @@
                         href="{{ route('reserva.create') }}">
                         <i class="fa-solid fa-plus"></i>
                         Cadastrar</a><br>
+
+                    <div class="row p-2 d-flex pl-10">
+                        <a class="bg-blue-500 hover:bg-blue-600 text-white
+                        font-semibold py-2 px-4 rounded focus:outline
+                        focus:ring focus:border-green-300"
+                            href="{{ route('relatorio-reservas-gerar') }}">
+                            <i class="fa-solid fa-plus"></i>
+                            Gerar Relatório</a><br>
+                    </div>
+
                 </div>
             </div>
 
@@ -68,31 +80,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($reservas as $item) 
-
+                            @foreach ($reservas as $item)
                                 <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-200">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->hospede->nome ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->quarto->numero ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
-                                        @if($item->data_inicio)
+                                        @if ($item->data_inicio)
                                             {{ date('d-m-Y', strtotime($item->data_inicio)) }}
                                         @else
                                             return ''
-                                    @endif
+                                        @endif
                                     </td>
                                     <td class="whitespace-nowrap px-6 py-4">
-                                        @if($item->data_fim)
+                                        @if ($item->data_fim)
                                             {{ date('d-m-Y', strtotime($item->data_fim)) }}
                                         @else
                                             return ''
-                                    @endif</td>
+                                        @endif
+                                    </td>
                                     <td class="whitespace-nowrap px-6 py-4"><a
-                                            href="{{ route('reserva.edit', $item->id) }}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a></td>
+                                            href="{{ route('reserva.edit', $item->id) }}"><i
+                                                class="fa-solid fa-pen-to-square" style="color: blue;"></i></a></td>
                                     <td class="whitespace-nowrap px-6 py-4"><a
                                             href="{{ route('reserva.destroy', $item->id) }}"
-                                            onclick="return confirm('Deseja Excluir?')"><i class="fa-solid fa-trash" style="color: grey"></i></a>
+                                            onclick="return confirm('Deseja Excluir?')"><i class="fa-solid fa-trash"
+                                                style="color: grey"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

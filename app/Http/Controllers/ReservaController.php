@@ -5,10 +5,23 @@ use App\Models\Reserva;
 use App\Models\Hospede;
 use App\Models\Quarto;
 use Illuminate\Http\Request;
-use PDF;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReservaController extends Controller{
+    
+    public function gerarPDF()
+    {
+        // Recupere dados do banco de dados
+        $reservas = Reserva::all();
+    
+        // Carregue a visualização com os dados
+        $pdf = PDF::loadView('relatorio-reservas.index', compact('reservas'))->setOptions(['defaultFont' => 'sans-serif']);
+    
+        // Faça o download do PDF ou exiba no navegador
+        return $pdf->download('relatorio.pdf');
+    }
+    
 
     public function index()
     {

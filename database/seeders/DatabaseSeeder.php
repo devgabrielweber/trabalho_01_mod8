@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             QuartosSeeder::class,
             ReservasSeeder::class,
             ChaleSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
