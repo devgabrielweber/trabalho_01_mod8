@@ -5,8 +5,8 @@ use App\Models\Espaco;
 use App\Models\Turma;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Charts\espacoChart;
-use Storage;
 
 class EspacoController extends Controller{
 
@@ -157,14 +157,14 @@ class EspacoController extends Controller{
     {
         $espaco = Espaco::findOrFail($id);
 
-        $foto = $espaco->foto;
+        $caminhoFoto = public_path().'/storage/images/espaco/'.$espaco->foto;
 
-        $caminho = 'images/espaco/'.$foto;
-        Storage::delete($caminho);
 
-        $espaco->delete();
-
+        unlink($caminhoFoto);   //DELETA O ARQUIVO DE FOTO DA PASTA STORAGE
+        $espaco->delete();      //DELETA OS DADOS DO BANCO
         return redirect('espaco')->with('success', "Removido com sucesso!");
+
+        
     }
     /** 
      * pesquisa e filtra o registro do banco de dados

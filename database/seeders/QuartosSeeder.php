@@ -19,21 +19,21 @@ class QuartosSeeder extends Seeder
                 'qtd_camas' => 1,
                 'descricao' => "Suíte para 2 pessoas. SMART TV 50'' e ar condicionado",
                 'diaria' => 249.99,
-                'foto' => 'images/quarto/q1.jpg',
+                'foto' => 'q1.jpg',
             ],
             [
                 'numero' => 103,
                 'qtd_camas' => 2,
                 'descricao' => "Quarto para até 4 pessoas. Equipado com frigobar, um banheiro e aquecedor elétrico",
                 'diaria' => 299.99,
-                'foto' => 'images/quarto/q2.jpg',
+                'foto' => 'q2.jpg',
             ],
             [
                 'numero' => 102,
                 'qtd_camas' => 3,
                 'descricao' => "1 cama de casal e duas de solteiro. Planejado para o maior conforto para famílias viajando",
                 'diaria' => 399.99,
-                'foto' => 'images/quarto/q3.jpg',
+                'foto' => 'q3.jpg',
             ],
         ];
 

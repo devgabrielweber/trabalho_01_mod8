@@ -47,6 +47,7 @@ class QuartoController extends Controller{
             'qtd_camas'=>'required|numeric',
             'descricao'=>'required',
             'diaria'=>'required|numeric',
+            'foto'=>'required'
         ],[
             'numero.required'=>"O :attribute é obrigatorio!",
             'numero.numeric'=>"O :attribute deve ser numerico!",
@@ -55,6 +56,7 @@ class QuartoController extends Controller{
             'descricao.required'=>"O :attribute é obrigatorio!",
             'diaria.required'=>"O :attribute é obrigatorio!",
             'diaria.numeric'=>"O :attribute deve ser numerico!",
+            'foto.required'=>"A :attribute é obrigatória!",
         ]);
 
         $foto = $request->file('foto');
@@ -106,8 +108,12 @@ class QuartoController extends Controller{
     /**
      * Atualiza os dados do formulário
      */
-    public function update(Request $request, Quarto $quarto)
+    public function update(Request $request, Quarto $quarto, $id)
     {
+
+        $quarto = Quarto::find($id);
+
+
         $request->validate([
             'numero'=>'required',
             'qtd_camas'=>'required',
@@ -126,6 +132,13 @@ class QuartoController extends Controller{
 
 
         $foto = $request->file('foto');
+        if($quarto->foto) {
+            $nome_arquivo = $quarto->foto;
+        }
+        else {
+            $nome_arquivo = "";
+        }
+        
         //verifica se existe foto no formulário
         if($foto){
             $nome_arquivo =
@@ -162,7 +175,14 @@ class QuartoController extends Controller{
     {
         $quarto = Quarto::findOrFail($id);
 
-        $quarto->delete();
+        $caminhoFoto = public_path().'/storage/images/quarto/'.$quarto->foto;
+
+
+        if($quarto->foto != 'sem_foto.jpg' && $quarto->foto != '') {
+            unlink($caminhoFoto);   //DELETA O ARQUIVO DE FOTO DA PASTA STORAGE
+        }
+        
+        $quarto->delete();      //DELETA O REGISTRO DO BANCO
 
         return redirect('quarto')->with('success', "Removido com sucesso!");
     }

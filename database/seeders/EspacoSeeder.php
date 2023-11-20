@@ -18,7 +18,7 @@ class EspacoSeeder extends Seeder
                 'nome' => "Piscina",
                 'descricao' => "Acesso à piscina do hotel, em tamanho olímpico",
                 'valor' => "29.99",
-                'foto' => "images/espaco/piscina.jpg",
+                'foto' => "piscina.jpg",
                 
             ],
         ];
