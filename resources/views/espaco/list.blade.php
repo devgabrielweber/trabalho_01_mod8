@@ -46,6 +46,14 @@
                         href="{{ route('espaco.create') }}">
                         <i class="fa-solid fa-plus"></i>
                         Cadastrar</a><br>
+                    <div class="row p-2 d-flex pl-10">
+                        <a class="bg-blue-500 hover:bg-blue-600 text-white
+                                        font-semibold py-2 px-4 rounded focus:outline
+                                        focus:ring focus:border-green-300"
+                            href="{{ route('espaco.chart') }}">
+                            <i class="fa-solid fa-plus"></i>
+                            Gerar gráfico</a><br>
+                    </div>
                 </div>
             </div>
 
@@ -74,8 +82,17 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->nome ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->descricao ?? '' }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->valor ?? '' }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4"><img src="storage/{{ $item->foto }}" width="100px"
-                                            alt="imagem"></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><img
+                                            src="/storage/images/espaco/{{ $item->foto }}" width="100px" alt="imagem">
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                            href="{{ route('espaco.edit', $item->id) }}"><i
+                                                class="fa-solid fa-pen-to-square" style="color: blue;"></i></a></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                            href="{{ route('espaco.destroy', $item->id) }}"
+                                            onclick="return confirm('Deseja Excluir?')"><i class="fa-solid fa-trash"
+                                                style="color: grey"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

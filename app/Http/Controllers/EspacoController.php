@@ -5,10 +5,18 @@ use App\Models\Espaco;
 use App\Models\Turma;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
-use PDF;
-
+use App\Charts\espacoChart;
+use Storage;
 
 class EspacoController extends Controller{
+
+
+    public function geraGrafico(espacoChart $precoEspacos)
+    {
+        return view('quarto.chart', ['chart' => $precoEspacos->build()]);
+    }
+
+
 
     public function index()
     {
@@ -33,6 +41,21 @@ class EspacoController extends Controller{
     public function store(Request $request)
     {
 
+        $foto = $request->file('foto');
+        //verifica se existe foto no formulário
+        if($foto){
+            $nome_arquivo =
+            date('YmdHis').'.'.$foto->getClientOriginalExtension();
+
+            $diretorio = "images/espaco/";
+            //salva foto em uma pasta do sistema
+
+
+            $foto->storeAs($diretorio,$nome_arquivo,'public');
+
+        }
+
+
         $request->validate([
             'nome'=>'required',
             'descricao'=>'required',
@@ -49,7 +72,7 @@ class EspacoController extends Controller{
         $dados = ['nome'=> $request->nome,
         'valor'=> $request->valor,
         'descricao'=> $request->descricao,
-        'foto'=>$request->foto,
+        'foto'=>$nome_arquivo,
         ];
 
         Espaco::create($dados); //ou  $request->all()
@@ -82,6 +105,7 @@ class EspacoController extends Controller{
      */
     public function update(Request $request, Espaco $espaco)
     {
+        
         $request->validate([
             'nome'=>'required|alpha',
             'valor'=>'required|numeric',
@@ -94,11 +118,27 @@ class EspacoController extends Controller{
             'foto.required'=>"O :attribute é obrigatorio!",
             ]);
 
+            $foto = $request->file('foto');
+            //verifica se existe foto no formulário
+            if($foto){
+                $nome_arquivo =
+                date('YmdHis').'.'.$foto->getClientOriginalExtension();
+    
+                $diretorio = "images/espaco/";
+                //salva foto em uma pasta do sistema
+    
+    
+                $foto->storeAs($diretorio,$nome_arquivo,'public');
+    
+            }
+    
+
+
 
         $dados = ['nome'=> $request->nome,
         'valor'=> $request->valor,
         'descricao'=> $request->descricao,
-        'foto'=>$request->foto,
+        'foto'=>$nome_arquivo,
         ];
 
         Espaco::updateOrCreate(
@@ -116,6 +156,11 @@ class EspacoController extends Controller{
     public function destroy($id)
     {
         $espaco = Espaco::findOrFail($id);
+
+        $foto = $espaco->foto;
+
+        $caminho = 'images/espaco/'.$foto;
+        Storage::delete($caminho);
 
         $espaco->delete();
 

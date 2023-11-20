@@ -79,7 +79,11 @@
                     $nome_foto = !empty($quarto->foto) ? $quarto->foto : 'sem_foto.jpg';
                 @endphp
                 <div>
-                    <img class="h-40 w-40 object-cover" src="/storage/{{ $nome_foto }}" width="300px"
+                    <label
+                        class="block text-gray-700
+                                font-bold mb-2
+                    ">Foto</label>
+                    <img class="h-40 w-40 object-cover" src="/storage/images/quarto/{{ $nome_foto }}" width="300px"
                         alt="foto">
                     <br>
                     <input

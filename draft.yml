@@ -1,0 +1,44 @@
+models:
+  Ramal:
+    nome: string:20
+    telefone: bigint
+    responsavel: string:150
+
+  Servico:
+    nome: string:100
+    preco: float
+    responsavel: string:150
+
+
+controllers:
+  Ramal:
+    index:
+      query: all
+      render: ramal.list with:ramals
+
+    create:
+      render: ramal.form
+
+    store:
+      validate: nome, telefone, responsavel
+      save: ramal
+      flash: ramal.title
+      redirect: ramal.list
+
+    destroy:
+      delete: ramal
+      redirect: ramal.list
+
+    edit:
+      render: ramal.form with:ramal
+    
+    update:
+      validate: nome, telefone, responsavel
+      update: ramal
+      flash: ramal.id
+      redirect: ramal.list
+
+  Servico:
+    resource: web
+    search:
+      redirect: servico.list

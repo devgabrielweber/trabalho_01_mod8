@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RamalController;
+use App\Models\Servico;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,7 @@ use App\Http\Controllers\EspacoController;
 use App\Http\Controllers\HospedeController;
 use App\Http\Controllers\QuartoController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\ServicoController;
 
 Route::get('/', function () {
     return view('main');
@@ -51,6 +54,10 @@ Route::get('/hospede/destroy/{id}',[HospedeController::class, 'destroy'])->name(
 
 Route::put('/hospede/update/{id}',[HospedeController::class, 'update'])->name('hospede.update');
 
+
+
+
+Route::get('/espaco-chart',[EspacoController::class,'geraGrafico'])->name('espaco.chart');
 
 
 //ROTAS DOS QUARTOS
@@ -152,3 +159,22 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 
 
 require __DIR__.'/auth.php';
+
+
+Route::resource('ramal', App\Http\Controllers\RamalController::class);
+Route::post('/ramal-search',[RamalController::class,'search'])->name('ramal.search');
+
+Route::resource('ramal', App\Http\Controllers\RamalController::class)->except('show');
+
+Route::get('servico/search', [App\Http\Controllers\ServicoController::class, 'search']);
+Route::resource('servico', App\Http\Controllers\ServicoController::class);
+
+
+Route::resource('ramal', App\Http\Controllers\RamalController::class)->except('show');
+
+Route::get('servico/search', [App\Http\Controllers\ServicoController::class, 'search'])->name('servico.search');
+Route::resource('servico', App\Http\Controllers\ServicoController::class);
+
+
+route::get('/servico-delete/{id}',[ServicoController::class,'delete'])->name('servico-delete');
+route::get('/ramal-delete/{id}',[RamalController::class,'delete'])->name('ramal-delete');

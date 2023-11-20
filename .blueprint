@@ -1,0 +1,33 @@
+created:
+    - app/Http/Controllers/RamalController.php
+    - app/Http/Controllers/ServicoController.php
+    - database/factories/RamalFactory.php
+    - database/factories/ServicoFactory.php
+    - database/migrations/2023_11_20_132930_create_ramals_table.php
+    - database/migrations/2023_11_20_132931_create_servicos_table.php
+    - app/Models/Ramal.php
+    - app/Models/Servico.php
+    - tests/Feature/Http/Controllers/RamalControllerTest.php
+    - tests/Feature/Http/Controllers/ServicoControllerTest.php
+    - app/Http/Requests/ServicoStoreRequest.php
+    - app/Http/Requests/ServicoUpdateRequest.php
+    - resources/views/servico/index.blade.php
+    - resources/views/servico/create.blade.php
+    - resources/views/servico/show.blade.php
+    - resources/views/servico/edit.blade.php
+updated:
+    - routes/web.php
+skipped:
+    - resources/views/ramal/list.blade.php
+    - resources/views/ramal/form.blade.php
+    - resources/views/ramal/form.blade.php
+models:
+    Adicional: { hospede_id: 'biginteger unsigned', espaco_id: 'biginteger unsigned', reserva_id: 'biginteger unsigned', pessoas: integer }
+    Chale: { numero: integer, pessoas: integer, descricao: 'string nullable', foto: 'string nullable', diaria: 'float:8,2' }
+    Espaco: { nome: string, descricao: string, valor: 'float:8,2', foto: string }
+    Hospede: { nome: 'string:100', cpf: 'string:14', email: 'string:120', telefone: 'string:40' }
+    Quarto: { numero: integer, qtd_camas: integer, descricao: 'string:400', diaria: 'float:8,2', foto: 'string nullable' }
+    Reserva: { hospede_id: 'biginteger unsigned nullable', quarto_id: 'biginteger unsigned nullable', data_inicio: date, data_fim: date }
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Ramal: { nome: 'string:20', telefone: bigint, responsavel: 'string:150' }
+    Servico: { nome: 'string:100', preco: float, responsavel: 'string:150' }

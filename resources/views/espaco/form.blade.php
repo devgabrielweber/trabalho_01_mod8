@@ -63,18 +63,26 @@
                         value="@if (!empty($espaco->valor)) {{ $espaco->valor }}@elseif (!empty(old('valor'))){{ old('valor') }}@else{{ '' }} @endif">
                 </div>
 
-                <div class="py-4">
+                @php
+                    $nome_foto = !empty($espaco->foto) ? $espaco->foto : 'sem_foto.jpg';
+                @endphp
+                <div>
                     <label
                         class="block text-gray-700
                                 font-bold mb-2
                     ">Foto</label>
-                    <input type="text"
-                        class="px-4 py-2
-                         border border-blue-700 rounded-md w-full" name="foto"
-                        value="@if (!empty($espaco->foto)) {{ $espaco->foto }}@elseif (!empty(old('foto'))){{ old('foto') }}@else{{ '' }} @endif">
+                    <img class="h-40 w-40 object-cover" src="/storage/images/espaco/{{ $nome_foto }}" width="300px"
+                        alt="foto">
+                    <br>
+                    <input
+                        class="block w-full text-sm text-slate-500
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-green-50 file:text-green-700
+                                hover:file:bg-green-100"
+                        type="file" name="foto"><br>
                 </div>
-
-
 
 
                 <div class="py-4 px-2 flex center">
@@ -93,7 +101,6 @@
                         href="{{ route('espaco.index') }}">
                         <i class="fa-solid fa-arrow-left"></i> Voltar</a>
                 </div>
-
             </form>
         </div>
     </div>
