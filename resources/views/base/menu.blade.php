@@ -28,7 +28,7 @@
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         </div>
-        <a href="{{ Auth::logout() }}">logout</a>
+        <a href="/">logout</a>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
 </header>
