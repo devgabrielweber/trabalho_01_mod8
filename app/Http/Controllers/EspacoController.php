@@ -109,16 +109,22 @@ class EspacoController extends Controller{
         $request->validate([
             'nome'=>'required|alpha',
             'valor'=>'required|numeric',
-            'foto'=>'required',
         ],[
             'nome.required'=>"O :attribute é obrigatorio!",
             'descricao.required'=>"O :attribute é obrigatorio!",
             'valor.required'=>"O :attribute é obrigatorio!",
             'valor.numeric'=>"O :attribute deve ser numerico!",
-            'foto.required'=>"O :attribute é obrigatorio!",
             ]);
 
             $foto = $request->file('foto');
+
+            if($espaco->foto) {
+                $nome_arquivo = $espaco->foto;
+            }
+            else {
+                $nome_arquivo = "";
+            }
+
             //verifica se existe foto no formulário
             if($foto){
                 $nome_arquivo =

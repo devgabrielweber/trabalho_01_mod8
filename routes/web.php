@@ -172,7 +172,7 @@ Route::resource('servico', App\Http\Controllers\ServicoController::class);
 
 Route::resource('ramal', App\Http\Controllers\RamalController::class)->except('show');
 
-Route::get('servico/search', [App\Http\Controllers\ServicoController::class, 'search'])->name('servico.search');
+Route::post('servico/search', [App\Http\Controllers\ServicoController::class, 'search'])->name('servico.search');
 Route::resource('servico', App\Http\Controllers\ServicoController::class);
 
 

@@ -115,10 +115,10 @@ class QuartoController extends Controller{
 
 
         $request->validate([
-            'numero'=>'required',
-            'qtd_camas'=>'required',
+            'numero'=>'required|numeric',
+            'qtd_camas'=>'required|numeric',
             'descricao'=>'required',
-            'diaria'=>'required',
+            'diaria'=>'required|numeric',
         ],[
             'numero.required'=>"O :attribute é obrigatorio!",
             'numero.numeric'=>"O :attribute deve ser numerico!",
@@ -138,6 +138,7 @@ class QuartoController extends Controller{
         else {
             $nome_arquivo = "";
         }
+
         
         //verifica se existe foto no formulário
         if($foto){

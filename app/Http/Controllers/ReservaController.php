@@ -71,7 +71,9 @@ class ReservaController extends Controller{
         ];
 
        $reserva = Reserva::create($dados); //ou  $request->all()
-        return view('reserva.adicional')->with(['reserva'=>$reserva]);
+
+       $reservas = Reserva::all();
+        return view('reserva.list')->with(['reservas'=>$reservas]);
     }
 
     /**
